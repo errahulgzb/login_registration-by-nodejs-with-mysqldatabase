@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Login and Registration</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+<style type="text/css">
+	html{
+		padding: 50px;
+	}
+</style>
+  </head>
+
+<body>
+	<div class="container">
+
+		<div class="page-header text-center">
+			
+			<h1>My Profile</h1>
+			<a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="well">
+					<h3><span class="fa fa-user"></span> Welcome <%= user.username %></h3>
+				</div>
+				<p> 
+					<strong>id </strong>
+				</p>
+				
+			</div>
+		</div>
+		
+	</div>
+  
+</body>
+</html>
