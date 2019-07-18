@@ -25,7 +25,8 @@ module.exports=function(passport){
 			connection.query("SELECT * FROM users WHERE username=?",[username],function(err,rows){
 				if(err){
 					done(err);
-				}else if(rows.length){
+				}
+				if(rows.length){
 					return done(null,false,req.flash('signupMessage','Username already exists, Please try another username.'));
 				}else{
 					var newUserMysql= {
@@ -43,24 +44,23 @@ module.exports=function(passport){
 			});
 		});
 
-	passport.use(
-		'local-login',new LocalStrategy({
+	passport.use(new LocalStrategy({
 			usernameField:"username",
 			passwordField:"password",
 			passReqToCallback:true
 		},
 		function(req,username,password,done){
 			connection.query("SELECT * FROM users WHERE username=?",[username],function(err,rows){
-					if(err)
+					if(err){
 						return done(err);
+					}
 					if(!rows.length){
 						return done(null,false,req.flash("loginMessage","No user found!!."));
 					}
-					if(!bcrypt.compareSync(password,rows[0].password))
+					if(!bcrypt.compareSync(password,rows[0].password)){
 						return done(null,rows[0]);
+					}
 				});
-		})
-
-		);
+		}));
 
 };
